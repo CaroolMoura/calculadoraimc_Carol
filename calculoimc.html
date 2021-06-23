@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="tect/html;" charset="UTF=8" >
+<title> </title>
+
+</head>
+
+<style> 
+    
+    .conteudo{
+        background-color: #ffffff;
+        width: 250px;
+        height: 250px;
+        margin: 6px;
+        border-radius: 7px;
+        padding-top: 20px;
+        line-height: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        position: fixed;
+        float: left;
+    }
+
+    .resultado {
+        background-color: #000000;
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+        border-radius: 7px;
+        float: right;
+        position: fixed;
+        float: left;
+    }
+
+</style>
+
+
+
+<div id="imc">
+
+<form name="imc" method="POST" action="calculoimc.html">
+    <input type="text" placeholder="Nome"><br>
+    <input type="number" placeholder="Idade"><br>
+    <input type="number" placeholder="Peso" id="peso"><br>
+    <input type="number" placeholder="Altura" id="altura"><br>
+ 
+</form>
+<button onclick="calcular()"> Calcular IMC</button><br><br>
+
+<div id="resultado"> Resultado</div> 
+
+</div>
+
+
+<script>     
+
+ function calcular(){
+
+     let altura = document.getElementById('altura').value;
+     let Peso = document.getElementById('peso').value;
+     let imcres = parseFloat(Peso) / (parseFloat(altura) * parseFloat(altura));
+     let situacao="";
+
+
+     //document.getElementById("resultado").innerHTML = imcres;
+
+     
+     if(imcres<17){
+         situacao = "Muito Abaixo do Peso";
+     } 
+     else if (imcres>=17 && imcres<18,49){
+        situacao = "Abaixo do peso";
+     }
+        
+     else if(imcres>18,5 && imcres<24,99) {
+        situacao= "Peso Normal"; 
+     }
+        
+     else if(imcres>25 && imcres<29,99) {
+        situacao = "Acima do Peso";
+
+     }
+        
+     else if(imcres>30 && imcres<34,99) {
+        situacao = "Obesidade I";
+
+     }
+     else if(imcres>35 && imcres<39,99){
+        situacao = "Obesidade II";
+
+     }
+        
+     else if(imcres>40){
+        situacao = "Obesidade III(mórbida)"
+     }
+     
+     document.getElementById("resultado").innerHTML = "imc=" + imcres + "/ situação = " + situacao ;   
+    
+     }
+</script>      
